@@ -2,7 +2,7 @@
 /**
  * is_holiday
  *
- * @version    1.0
+ * @version    1.0.1
  * @author     senapoyo
  *
  * 指定された日が日本の祝日であるか判定する
@@ -34,6 +34,7 @@ function _is_holiday($year, $month, $day, $check = false) {
     $holiday = array();
     if ($year >= 1948) $holiday[1][] = 1; // 元日
     if ($year >= 1967) $holiday[2][] = 11; // 建国記念の日
+    if ($year >= 2020) $holiday[2][] = 23; // 天皇誕生日(予定)
     if ($year >= 1948) $holiday[4][] = 29; // 天皇誕生日→みどりの日(1989)→昭和の日(2007)
     if ($year >= 1948) $holiday[5][] = 3; // 憲法記念日
     if ($year >= 2007) $holiday[5][] = 4; // みどりの日
@@ -41,7 +42,7 @@ function _is_holiday($year, $month, $day, $check = false) {
     if ($year >= 2016) $holiday[8][] = 11; // 山の日
     if ($year >= 1927) $holiday[11][] = 3; // 明治節→文化の日(1948)
     if ($year >= 1878) $holiday[11][] = 23; // 新嘗祭→勤労感謝の日(1948)
-    if ($year >= 1989 && $year <= 2019) $holiday[12][] = 23; // 天皇誕生日(暫定)
+    if ($year >= 1989 && $year <= 2018) $holiday[12][] = 23; // 天皇誕生日
 
     // 過去の祝日
     if ($year >= 1878 && $year <= 1948) $holiday[1][] = 3; // 元始祭
@@ -60,11 +61,12 @@ function _is_holiday($year, $month, $day, $check = false) {
     if ($year >= 1913 && $year <= 1947) $holiday[10][] = 31; // 天長節祝日
     if ($year >= 1878 && $year <= 1912) $holiday[11][] = 3; // 天長節
 
-    // 皇室慶弔行事に伴う休日
+    // 皇室慶弔行事に伴う休日、祝日
     if ($year == 1959) $holiday[4][] = 10; // 皇太子・明仁親王の結婚の儀
     if ($year == 1989) $holiday[2][] = 24; // 昭和天皇の大喪の礼
     if ($year == 1990) $holiday[11][] = 12; // 即位の礼正殿の儀
-    if ($year == 1993) $holiday[6][] = 9; // 皇太子・皇太子徳仁親王の結婚の儀
+    if ($year == 1993) $holiday[6][] = 9; // 皇太子・徳仁親王の結婚の儀
+    if ($year == 2019) $holiday[5][] = 1; // 徳仁親王御即位、剣璽等承継の儀・即位後朝見の儀(予定)
 
     if (isset($holiday[$month]) && in_array($day, $holiday[$month])) return true;
 
